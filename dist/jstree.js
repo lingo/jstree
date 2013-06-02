@@ -4220,9 +4220,14 @@ Adds checkboxes to the tree.
 					this.check_node(obj);
 				}
 			},
+			check_all : function (context) {
+				var ret = context ? $(context).find(".jstree-unchecked").closest('li') : this.get_container().find(".jstree-unchecked").closest('li');
+				ret.find(".jstree-checkbox").addClass("jstree-checked").removeClass('jstree-unchecked jstree-undetermined').children(':checkbox').prop('checked', true).prop('indeterminate', false);
+				this.__callback({ "obj" : ret });
+			},
 			uncheck_all : function (context) {
 				var ret = context ? $(context).find(".jstree-checked").closest('li') : this.get_container().find(".jstree-checked").closest('li');
-				ret.children(".jstree-checkbox").removeClass("jstree-checked jstree-undetermined").addClass('jstree-unchecked').children(':checkbox').prop('checked', false).prop('indeterminate', false);
+				ret.find(".jstree-checkbox").removeClass("jstree-checked jstree-undetermined").addClass('jstree-unchecked').children(':checkbox').prop('checked', false).prop('indeterminate', false);
 				this.__callback({ "obj" : ret });
 			},
 
