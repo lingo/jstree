@@ -4274,21 +4274,19 @@ Adds checkboxes to the tree.
 
 					if(sc + su + si < st) { return; }
 
-					if(0 && su === st) {
-						// unchecked == total, so uncheck parent
+					if(su === st) {
 						c = obj.find(' > a > .jstree-checkbox');
 						if(c.hasClass('jstree-unchecked')) { return; }
 						c.removeClass('jstree-undetermined jstree-checked').addClass('jstree-unchecked').children(':checkbox').prop('checked', false).prop('indeterminate', false);
 						continue;
 					}
-					if(0 && sc === st) {
-						// checked == total, so check parent
+					if(sc === st) {
 						c = obj.find(' > a > .jstree-checkbox');
 						if(c.hasClass('jstree-checked')) { return; }
 						c.removeClass('jstree-undetermined jstree-unchecked').addClass('jstree-checked').children(':checkbox').prop('checked', true).prop('indeterminate', false);
 						continue;
 					}
-					//obj.parentsUntil(".jstree", "li").addBack().find(' > a > .jstree-checkbox').removeClass('jstree-checked jstree-unchecked').addClass('jstree-undetermined').children(':checkbox').prop('checked', false).prop('undetermined', true);
+					obj.parentsUntil(".jstree", "li").addBack().find(' > a > .jstree-checkbox').removeClass('jstree-checked jstree-unchecked').addClass('jstree-undetermined').children(':checkbox').prop('checked', false).prop('undetermined', true);
 					return;
 				}
 			},
